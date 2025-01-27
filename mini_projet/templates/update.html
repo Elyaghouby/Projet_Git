@@ -1,0 +1,53 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='main.css') }}">
+    <title>Document</title>
+</head>
+
+<body>
+    <center>
+        <h1>Formulaire d'inscription</h1>
+        <fieldset>
+            <legend>Vos infos</legend>
+            <form action="{{ url_for('updt',g=etudiant.id) }}" method="post">
+                <table>
+                    <tr>
+                        <th>Nom :</th>
+                        <td><input type="text" placeholder="Votre nom" name="nom" value="{{ etudiant.nom }}"></td>
+                    </tr>
+                    <tr>
+                        <th>Prenom :</th>
+                        <td><input type="text" placeholder="Votre prenom" name="pr" value="{{ etudiant.prenom }}"></td>
+                    </tr>
+                    <tr>
+                        <th>Matricule :</th>
+                        <td><input type="number" placeholder="Votre matricule" name="mat"
+                                value="{{ etudiant.matricule }}"></td>
+                    </tr>
+                    <tr>
+                        <th>Classe :</th>
+                        <td>
+                            <select name="cl" class="cl">
+                                <option value="DSI" {% if etudiant.specialite=="DSI" %} selected {% endif %}>DSI
+                                </option>
+                                <option value="RSS" {% if etudiant.specialite=="RSS" %} selected {% endif %}>RSS
+                                </option>
+                                <option value="CNM" {% if etudiant.specialite=="CNM" %} selected {% endif %}>CNM
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Valider" class="sub"></td>
+                    </tr>
+                </table>
+            </form>
+        </fieldset>
+    </center>
+</body>
+
+</html> -->

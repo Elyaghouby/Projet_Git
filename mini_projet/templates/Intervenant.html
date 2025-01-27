@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La page d'affichage</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 48px;
+        }
+
+        nav {
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .feature {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+        .ajou{
+            position: absolute;
+            top: 290px;
+            left: 430px;
+            max-width: 100%;
+            height: auto;
+        }
+        .RNNXgb {
+            display: flex;
+            z-index: 3;
+            position: relative;
+            min-height: 44px;
+            background: #fff;
+            border: 1px solid transparent;
+            box-shadow: 0 2px 5px 1px rgba(64,60,67,.16);
+            border-radius: 24px;
+            margin: 0 auto;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>La page des Intervenants</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('clients') }}">Clients</a></li>
+            <li><a href="{{ url_for('intervenant') }}">Intervenants</a></li>
+            <li><a href="{{ url_for('intervention') }}">Interventions</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Nos Intervenants</h2>
+        <input class="RNNXgb" type="text" id="search-input" placeholder="     Rechercher" onkeyup="searchTable()">
+
+        <script>
+            function searchTable() {
+                var input = document.getElementById("search-input");
+                var filter = input.value.toUpperCase();
+                var table = document.getElementById("myTable");
+                var rows = table.getElementsByTagName("tr");
+
+                for (var i = 1; i < rows.length; i++) {
+                    var cells = rows[i].getElementsByTagName("td");
+                    var found = false;
+
+                    for (var j = 0; j < cells.length; j++) {
+                        var cell = cells[j];
+                        if (cell) {
+                            var cellText = cell.textContent || cell.innerText;
+                            if (cellText.toUpperCase().indexOf(filter) > -1) {
+                                found = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (found) {
+                        rows[i].style.display = "";
+                    } else {
+                        rows[i].style.display = "none";
+                    }
+                }
+            }
+        </script>
+        <center><a href="{{ url_for('intervenant_form') }}"><img class="ajou" src="static/plus.png" width="40" height="40"
+                    title="ajouter un intervenant"></a></center>
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>poste</th>
+                    <th colspan="2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for Intervenant in Intervenants %}
+                <tr>
+                    <td>{{ Intervenant.nom }}</td>
+                    <td>{{ Intervenant.prenom }}</td>
+                    <td>{{ Intervenant.poste }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_intervenant', intervenant_id=Intervenant.id) }}">
+                            <img src="static/draw.png" width="50" height="50" title="modifier un intervenant">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('delete_intervenant', intervenant_id=Intervenant.id) }}"
+                        onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet intervenant ?')">
+                            <img src="static/delete.png" width="50" height="50" title="supprimer un intervenant">
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <p>&copy; 2024 Oussame Said 22079 et Med Mahmoud 23072</p>
+    </footer>
+</body>

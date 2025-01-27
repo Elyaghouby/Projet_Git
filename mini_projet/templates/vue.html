@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <p><a href="{{ url_for('form')}}">ajoutation</a></p>
+        <br><br>
+        <table style="border: 1px solid black; width: 400px;text-align: center;">
+            {% for etudiant in etudiants %}
+            <tr>
+                <td>
+                    {{etudiant.id}}
+                </td>
+                <td>
+                    {{etudiant.nom}}
+                </td>
+                <td>
+                    {{etudiant.prenom}}
+                </td>
+                <td>
+                    {{etudiant.matricule}}
+                </td>
+                <td>
+                    {{etudiant.specialite}}
+                </td>
+                <td>
+                    <a href="{{ url_for('supp',e=etudiant.id)}}">supprimer</a>
+                </td>
+                <td>
+                    <a href="{{ url_for('req',f=etudiant.id)}}">modifier</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </center>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier un Client</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='form-style.css') }}">
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Modifier un Client</h2>
+        <form action="{{ url_for('edit_client', client_id=client.id) }}" method="post">
+            <label for="nom">Nom:</label>
+            <input type="text" id="nom" name="nom" value="{{ client.nom }}" required>
+
+            <label for="prenom">Prénom:</label>
+            <input type="text" id="prenom" name="prenom" value="{{ client.prenom }}" required>
+
+            <label for="direction">Direction:</label>
+            <input type="text" id="direction" name="direction" value="{{ client.direction }}" required>
+
+            <button type="submit">Modifier</button>
+        </form>
+    </div>
+</body>
+
+</html>

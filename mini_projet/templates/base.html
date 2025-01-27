@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La page d'affichage</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 48px;
+        }
+
+        nav {
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .feature {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Une Belle Page Web</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{ url_for('clients') }">Clients</a></li>
+            <li><a href="{ url_for('Intervenant') }">Intervenant</a></li>
+            <li><a href="{ url_for('Intervention') }">Intervention</a></li>
+            <li><a href="#">Login</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Nos Clients</h2>
+        <div class="feature">
+            <h3>Design Élégant</h3>
+            <p>
+                {% block content %} {% endblock %}
+            </p>
+        </div>
+
+    </main>
+    <footer>
+        <p>&copy; 2024 Une Autre Belle Page Web</p>
+    </footer>
+</body>

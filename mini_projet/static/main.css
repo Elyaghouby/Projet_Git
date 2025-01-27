@@ -1,0 +1,26 @@
+fieldset {
+    width: 700px;
+}
+
+form {
+    width: 500px;
+    background-color: rgb(219, 217, 217);
+    height: 180px;
+}
+
+table {
+    width: 300px;
+}
+
+input {
+    margin: 6px;
+    margin-right: -100px;
+}
+
+.sub {
+    margin-left: 100px;
+}
+
+.cl{
+    width: 50px;
+}
